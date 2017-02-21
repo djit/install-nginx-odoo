@@ -31,15 +31,15 @@ sudo apt-get update && sudo apt-get -y install nginx
 
 # create odoo server config file
 # download default odoo server conf
-cd /etc/nginx/sites-enabled
 wget https://raw.githubusercontent.com/djit/install-nginx-odoo/master/odoo.site.conf
+sudo mv odoo.site.conf /etc/nginx/sites-enabled
 
 # remove default site
-sudo rm default
+sudo rm /etc/nginx/sites-enabled/default
 
 # add timeout setting for odoo requets
-cd ../conf.d
 wget https://raw.githubusercontent.com/djit/install-nginx-odoo/master/odoo.timeout.conf
+sudo mv odoo.timeout.conf /etc/nginx/conf.d
 
 # restart nginx server
 sudo service nginx restart
